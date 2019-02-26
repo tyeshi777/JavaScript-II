@@ -32,12 +32,15 @@ const counterFactory = () => {
   // `decrement` should decrement the counter variable and return it.
   let increment = 0;
   let decrement = 0;
-  return () => {
-    console.log(++increment);
-    console.log(--decrement);
+  return {
+    incrementer: () => ++increment,
+    decrementer: () => --decrement
   };
 };
-let x = counterFactory();
-x();
-x();
-x();
+newCounterFactory = counterFactory();
+console.log(newCounterFactory.incrementer());
+console.log(newCounterFactory.decrementer());
+console.log(newCounterFactory.incrementer());
+console.log(newCounterFactory.decrementer());
+console.log(newCounterFactory.incrementer());
+console.log(newCounterFactory.decrementer());
